@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إعدادات النظام | منصة زهراء أكتوبر الرقمية</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-page="settings">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <a href="../index.html" class="logo admin-logo">
+        <i class="ri-bus-wifi-line"></i>
+        منصة <span>زهراء أكتوبر الرقمية</span>
+      </a>
+      <div class="admin-menu">
+        <a href="index.html" class="sidebar-link"><i class="ri-dashboard-3-line"></i><span>لوحة الرئيسية</span></a>
+        <a href="../routes-management.html" class="sidebar-link"><i class="ri-route-line"></i><span>إدارة الخطوط</span></a>
+        <a href="../city-services.html" class="sidebar-link"><i class="ri-city-line"></i><span>خدمات المدينة</span></a>
+        <a href="../buses.html" class="sidebar-link"><i class="ri-bus-fill"></i><span>الحافلات والسائقين</span></a>
+        <a href="../delivery.html" class="sidebar-link"><i class="ri-shopping-bag-line"></i><span>الدليفري والسلع</span></a>
+        <a href="settings.html" class="sidebar-link active"><i class="ri-settings-4-line"></i><span>إعدادات النظام</span></a>
+        <a href="../reports.html" class="sidebar-link"><i class="ri-bar-chart-2-line"></i><span>التقارير والإحصاءات</span></a>
+        <a href="../login.html" class="sidebar-link">
+          <i class="ri-logout-box-r-line"></i><span>تسجيل الخروج</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="admin-content">
+      <section class="admin-topbar">
+        <div>
+          <span class="badge badge-success">إدارة المنصة</span>
+          <h1>إعدادات النظام</h1>
+        </div>
+        <div class="admin-topbar-actions">
+          <button class="btn btn-primary"><i class="ri-save-line"></i> حفظ التغييرات</button>
+        </div>
+      </section>
+
+      <section class="settings-summary">
+        <article class="stat-card">
+          <span class="stat-icon"><i class="ri-building-2-line"></i></span>
+          <div>
+            <span class="stat-label">اسم المنصة</span>
+            <span class="stat-value">زهراء أكتوبر الرقمية</span>
+          </div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon"><i class="ri-global-line"></i></span>
+          <div>
+            <span class="stat-label">الحالة العامة</span>
+            <span class="stat-value success-text">نشطة</span>
+          </div>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon"><i class="ri-time-line"></i></span>
+          <div>
+            <span class="stat-label">توقيت التشغيل</span>
+            <span class="stat-value">24/7</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="settings-layout">
+        <section class="panel-card settings-panel">
+          <div class="panel-heading">
+            <span>معلومات المنصة</span>
+            <span class="badge badge-info">Platform</span>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label"><i class="ri-building-line"></i> اسم المنصة</label>
+              <input id="platformName" class="form-control" type="text" value="منصة زهراء أكتوبر الرقمية">
+            </div>
+            <div class="form-group">
+              <label class="form-label"><i class="ri-map-pin-line"></i> اسم المدينة</label>
+              <input id="cityName" class="form-control" type="text" value="زهراء أكتوبر">
+            </div>
+            <div class="form-group">
+              <label class="form-label"><i class="ri-phone-line"></i> رقم الدعم</label>
+              <input id="supportPhone" class="form-control" type="text" value="+966 000 000 000">
+            </div>
+            <div class="form-group">
+              <label class="form-label"><i class="ri-mail-line"></i> البريد الإلكتروني</label>
+              <input id="supportEmail" class="form-control" type="email" value="support@zahraa-city.com">
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-card settings-panel">
+          <div class="panel-heading">
+            <span>إعدادات الخدمات</span>
+            <span class="badge badge-success">Services</span>
+          </div>
+          <div class="settings-list">
+            <label class="check-row">
+              <input id="serviceTransport" type="checkbox" data-service-toggle="transport" checked>
+              <span><i class="ri-bus-line"></i> النقل الحضري</span>
+            </label>
+            <label class="check-row">
+              <input id="servicePrivate" type="checkbox" data-service-toggle="private" checked>
+              <span><i class="ri-car-line"></i> المشاوير الخاصة</span>
+            </label>
+            <label class="check-row">
+              <input id="serviceDelivery" type="checkbox" data-service-toggle="delivery" checked>
+              <span><i class="ri-shopping-bag-line"></i> الدليفري وشراء السلع</span>
+            </label>
+            <label class="check-row">
+              <input id="serviceHome" type="checkbox" data-service-toggle="home" checked>
+              <span><i class="ri-tools-line"></i> الخدمات المنزلية</span>
+            </label>
+            <label class="check-row">
+              <input id="serviceStores" type="checkbox" data-service-toggle="stores" checked>
+              <span><i class="ri-store-2-line"></i> المتاجر المحلية</span>
+            </label>
+            <label class="check-row">
+              <input id="serviceSchools" type="checkbox" data-service-toggle="schools" checked>
+              <span><i class="ri-graduation-cap-line"></i> المدارس والحضانات والأندية</span>
+            </label>
+          </div>
+        </section>
+      </section>
+
+      <section class="settings-layout">
+        <section class="panel-card settings-panel">
+          <div class="panel-heading">
+            <span>إعدادات الخريطة</span>
+            <span class="badge badge-warning">Map</span>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label"><i class="ri-map-pin-user-line"></i> مركز المدينة</label>
+              <input id="mapCenter" class="form-control" type="text" value="30.933, 29.336">
+            </div>
+            <div class="form-group">
+              <label class="form-label"><i class="ri-archive-line"></i> نوع خطوط الخدمة</label>
+              <select id="serviceType" class="form-control">
+                <option selected>النقل الداخلي</option>
+                <option>المشاوير الخاصة</option>
+                <option>التوصيل</option>
+                <option>المدارس والأندية</option>
+              </select>
+            </div>
+            <div class="form-group full-span">
+              <label class="form-label"><i class="ri-compass-3-line"></i> مناطق الخدمة</label>
+              <input id="serviceAreas" class="form-control" type="text" value="حي اللوتس، حي الفيروز، حي الزهور، غرب المطار، نادي الداخلية">
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-card settings-panel">
+          <div class="panel-heading">
+            <span>إشعارات النظام</span>
+            <span class="badge badge-success">Notifications</span>
+          </div>
+          <div class="settings-list">
+            <label class="check-row">
+              <input type="checkbox" checked>
+              <span><i class="ri-notification-3-line"></i> إشعارات الرحلات</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" checked>
+              <span><i class="ri-shopping-bag-line"></i> إشعارات الطلبات</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" checked>
+              <span><i class="ri-tools-line"></i> إشعارات الخدمات المنزلية</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox">
+              <span><i class="ri-mail-line"></i> إشعارات البريد</span>
+            </label>
+          </div>
+        </section>
+      </section>
+
+      <section class="settings-layout">
+        <section class="panel-card settings-panel full-width">
+          <div class="panel-heading">
+            <span>إدارة البانر الإعلاني</span>
+            <span class="badge badge-warning">Banner</span>
+          </div>
+          <div class="form-grid">
+            <div class="form-group full-span">
+              <label class="form-label"><i class="ri-megaphone-line"></i> عنوان البانر الإعلاني</label>
+              <input id="bannerTitle" class="form-control" type="text" value="عرض خاص لطلاب وموظفي زهراء أكتوبر">
+            </div>
+            <div class="form-group full-span">
+              <label class="form-label"><i class="ri-text-format"></i> نص الإعلان</label>
+              <textarea id="bannerDescription" class="form-control" rows="3">خصم 30% على اشتراكات النقل والرحلات الدراسية، مع شحن ذكي للمحفظة ودعم مباشر عبر المنصة.</textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label"><i class="ri-links-line"></i> نص زر الإعلان</label>
+              <input id="bannerButtonText" class="form-control" type="text" value="تفعيل العرض">
+            </div>
+            <div class="form-group">
+              <label class="form-label"><i class="ri-links-line"></i> رابط زر الإعلان</label>
+              <input id="bannerButtonLink" class="form-control" type="text" value="subscriptions.html">
+            </div>
+            <div class="form-group full-span">
+              <label class="form-label"><i class="ri-image-2-line"></i> رابط صورة البانر</label>
+              <input id="bannerImage" class="form-control" type="url" value="https://images.unsplash.com/photo-1552664730-cfec5f28eb9b?auto=format&fit=crop&w=1200&q=80">
+            </div>
+            <div class="form-group full-span">
+              <label class="form-label"><i class="ri-upload-cloud-line"></i> أو اختر صورة للبانر</label>
+              <input id="bannerImageUpload" class="form-control" type="file" accept="image/*">
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-card settings-panel full-width">
+          <div class="panel-heading">
+            <span>إدارة بيانات المنصة</span>
+            <span class="badge badge-danger">Platform Data</span>
+          </div>
+
+          <div class="management-grid">
+            <section class="manager-card">
+              <div class="manager-card-title">
+                <i class="ri-service-line"></i> الخدمات
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-add-circle-line"></i> اسم الخدمة</label>
+                  <input id="newServiceName" class="form-control" type="text" placeholder="اسم الخدمة">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-list-check"></i> نوع الخدمة</label>
+                  <select id="newServiceType" class="form-control">
+                    <option>النقل</option>
+                    <option>متاجر</option>
+                    <option>خدمات منزلية</option>
+                    <option>تعليم</option>
+                    <option>توصيل</option>
+                  </select>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button id="addService" class="btn btn-primary"><i class="ri-add-line"></i> إضافة خدمة</button>
+              </div>
+              <ul id="serviceList" class="manager-list"></ul>
+            </section>
+
+            <section class="manager-card">
+              <div class="manager-card-title">
+                <i class="ri-store-2-line"></i> المتاجر
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-store-2-line"></i> اسم المتجر</label>
+                  <input id="newStoreName" class="form-control" type="text" placeholder="اسم المتجر">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-clipboard-line"></i> نوع المتجر</label>
+                  <select id="newStoreType" class="form-control">
+                    <option>سوبر ماركت</option>
+                    <option>خضار</option>
+                    <option>مكتبة</option>
+                    <option>خدمات</option>
+                  </select>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button id="addStore" class="btn btn-primary"><i class="ri-add-line"></i> إضافة متجر</button>
+              </div>
+              <ul id="storeList" class="manager-list"></ul>
+            </section>
+
+            <section class="manager-card">
+              <div class="manager-card-title">
+                <i class="ri-bus-fill"></i> أنواع المركبات
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-bus-fill"></i> نوع المركبة</label>
+                  <input id="newVehicleType" class="form-control" type="text" placeholder="نوع المركبة">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-user-3-line"></i> الطاقة</label>
+                  <select id="newVehicleCapacity" class="form-control">
+                    <option>8 ركاب</option>
+                    <option>15 ركاب</option>
+                    <option>25 ركاب</option>
+                    <option>40 ركاب</option>
+                  </select>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button id="addVehicleType" class="btn btn-primary"><i class="ri-add-line"></i> إضافة نوع</button>
+              </div>
+              <ul id="vehicleTypeList" class="manager-list"></ul>
+            </section>
+
+            <section class="manager-card">
+              <div class="manager-card-title">
+                <i class="ri-route-line"></i> الخطوط
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-route-line"></i> اسم الخط</label>
+                  <input id="newRouteName" class="form-control" type="text" placeholder="اسم الخط">
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-map-pin-line"></i> المحطات</label>
+                  <input id="newRouteStations" class="form-control" type="text" placeholder="حي اللوتس، حي الفيروز">
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button id="addRoute" class="btn btn-primary"><i class="ri-add-line"></i> إضافة خط</button>
+              </div>
+              <ul id="routeList" class="manager-list"></ul>
+            </section>
+          </div>
+
+          <div class="settings-layout">
+            <section class="panel-card settings-panel full-width">
+              <div class="panel-heading">
+                <span>تسليم الخدمة والأمان</span>
+                <span class="badge badge-danger">Security</span>
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-shield-check-line"></i> سياسة الوصول</label>
+                  <select id="AccessPolicy" class="form-control">
+                    <option selected>إدارة كاملة</option>
+                    <option>إدارة محدودة</option>
+                    <option>إدارة خدمات</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-lock-password-line"></i> مدة الجلسة</label>
+                  <select id="sessionDuration" class="form-control">
+                    <option selected>8 ساعات</option>
+                    <option>12 ساعة</option>
+                    <option>24 ساعة</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-exchange-dollar-line"></i> طريقة الدفع</label>
+                  <select id="paymentMethod" class="form-control">
+                    <option selected>محفظة رقمية</option>
+                    <option>كاش</option>
+                    <option>بطاقة</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label"><i class="ri-refresh-line"></i> مزامنة البيانات</label>
+                  <select id="dataSync" class="form-control">
+                    <option selected>تزامن تلقائي</option>
+                    <option>تزامن يدوي</option>
+                    <option>إيقاف</option>
+                  </select>
+                </div>
+              </div>
+              <div class="settings-actions">
+                <button id="saveSettings" class="btn btn-primary"><i class="ri-save-line"></i> حفظ إعدادات النظام</button>
+                <button id="resetSettings" class="btn btn-outline"><i class="ri-refresh-line"></i> إعادة التهيئة</button>
+              </div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
+<script src="../js/app.js"></script>
+<script src="../js/sync.js"></script>
+</html>
