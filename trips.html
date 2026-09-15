@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سجل الرحلات | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <style>
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .trips-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .trips-table th, .trips-table td {
+      padding: 14px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .trips-table th {
+      background: var(--bg-color);
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .table-responsive {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      كابتن <span>الرحلة</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-dashboard-3-line"></i> <span>الرئيسية</span></a></li>
+      <li><a href="trips.html" class="nav-link active"><i class="ri-route-line"></i> <span>رحلاتي</span></a></li>
+      <li><a href="login.html" class="nav-link" style="color: var(--danger);"><i class="ri-logout-box-r-line"></i> <span>خروج</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container" style="max-width: 900px;">
+
+    <!-- Page Title -->
+    <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <h2 style="font-weight: 800; color: var(--secondary); font-size: 1.4rem;">سجل الرحلات اليومي</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">متابعة أداء الرحلات المكتملة وإحصائيات العمل</p>
+      </div>
+      <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;" onclick="window.print()">
+        <i class="ri-printer-line"></i> طباعة التقرير
+      </button>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid">
+      <div class="card" style="text-align: center;">
+        <i class="ri-bus-line" style="font-size: 1.8rem; color: var(--primary);"></i>
+        <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 4px;">إجمالي الرحلات اليوم</span>
+        <strong style="font-size: 1.4rem; color: var(--secondary);">6 رحلات</strong>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <i class="ri-map-pin-distance-line" style="font-size: 1.8rem; color: var(--accent);"></i>
+        <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 4px;">المسافة المقطوعة</span>
+        <strong style="font-size: 1.4rem; color: var(--secondary);">142 كم</strong>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <i class="ri-time-line" style="font-size: 1.8rem; color: var(--warning);"></i>
+        <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-top: 4px;">ساعات القيادة</span>
+        <strong style="font-size: 1.4rem; color: var(--secondary);">5.5 ساعة</strong>
+      </div>
+    </div>
+
+    <!-- Completed Trips Table -->
+    <div class="card">
+      <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">
+        <i class="ri-file-list-3-line" style="color: var(--primary);"></i> تفاصيل رحلات اليوم (13 سبتمبر 2026)
+      </h3>
+
+      <div class="table-responsive">
+        <table class="trips-table">
+          <thead>
+            <tr>
+              <th>معرف الرحلة</th>
+              <th>الخط</th>
+              <th>وقت البدء</th>
+              <th>وقت الوصول</th>
+              <th>الالتزام بالوقت</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>#TR-801</strong></td>
+              <td>خط 01 (زهراء أكتوبر ↔ الحصري)</td>
+              <td>06:30 ص</td>
+              <td>06:55 ص</td>
+              <td><span style="color: var(--primary); font-weight: 700;">ممتاز (0 د)</span></td>
+              <td><span class="badge badge-success">مكتملة</span></td>
+            </tr>
+            <tr>
+              <td><strong>#TR-802</strong></td>
+              <td>خط 01 (الحصري ↔ زهراء أكتوبر)</td>
+              <td>07:10 ص</td>
+              <td>07:38 ص</td>
+              <td><span style="color: var(--warning); font-weight: 700;">+3 دقائق</span></td>
+              <td><span class="badge badge-success">مكتملة</span></td>
+            </tr>
+            <tr>
+              <td><strong>#TR-803</strong></td>
+              <td>خط 01 (زهراء أكتوبر ↔ الحصري)</td>
+              <td>08:00 ص</td>
+              <td>08:25 ص</td>
+              <td><span style="color: var(--primary); font-weight: 700;">ممتاز (0 د)</span></td>
+              <td><span class="badge badge-success">مكتملة</span></td>
+            </tr>
+            <tr>
+              <td><strong>#TR-804</strong></td>
+              <td>خط 02 (المجمع الطبي ↔ الجامعة)</td>
+              <td>09:00 ص</td>
+              <td>09:22 ص</td>
+              <td><span style="color: var(--primary); font-weight: 700;">ممتاز (-1 د)</span></td>
+              <td><span class="badge badge-success">مكتملة</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

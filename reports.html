@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التقارير والإحصائيات | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <style>
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--secondary);
+      color: #FFFFFF;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-brand span {
+      color: var(--primary);
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      color: #94A3B8;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .sidebar-link:hover, .sidebar-link.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+    }
+
+    .sidebar-link.active {
+      background: var(--primary);
+    }
+
+    .admin-main {
+      padding: 28px;
+      background: var(--bg-color);
+    }
+
+    .report-filter {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+
+    .stats-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .admin-table th, .admin-table td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .admin-table th {
+      background: var(--bg-color);
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 992px) {
+      .admin-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <i class="ri-bus-wifi-line" style="color: var(--primary); font-size: 1.5rem;"></i>
+        زهراء <span>إدارة</span>
+      </div>
+
+      <a href="index.html" class="sidebar-link"><i class="ri-dashboard-3-line"></i> <span>لوحة الرئيسية</span></a>
+      <a href="routes-management.html" class="sidebar-link"><i class="ri-route-line"></i> <span>إدارة الخطوط</span></a>
+      <a href="buses.html" class="sidebar-link"><i class="ri-bus-fill"></i> <span>الحافلات والسائقين</span></a>
+      <a href="reports.html" class="sidebar-link active"><i class="ri-bar-chart-2-line"></i> <span>التقارير والاحصائيات</span></a>
+      
+      <div style="margin-top: auto; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px;">
+        <a href="login.html" class="sidebar-link" style="color: var(--danger);"><i class="ri-logout-box-r-line"></i> <span>تسجيل الخروج</span></a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h1 style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);">تقارير الأداء والإيرادات</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">استعراض وتحليل البيانات التشغيلية والتنفيذية</p>
+        </div>
+        <button class="btn btn-primary" onclick="window.print()">
+          <i class="ri-printer-line"></i> طباعة / تصدير PDF
+        </button>
+      </div>
+
+      <!-- Filters Form -->
+      <div class="card" style="margin-bottom: 24px;">
+        <form class="report-filter" onsubmit="event.preventDefault(); alert('تم تحديث التقرير بناءً على الفلترة');">
+          <div style="flex: 1; min-width: 180px;">
+            <label class="form-label">الفترة الزمنية</label>
+            <select class="form-control">
+              <option>اليوم (13 سبتمبر 2026)</option>
+              <option>الأسبوع الحالي</option>
+              <option>الشهر الحالي (سبتمبر 2026)</option>
+            </select>
+          </div>
+
+          <div style="flex: 1; min-width: 180px;">
+            <label class="form-label">تصفية حسب الخط</label>
+            <select class="form-control">
+              <option value="all">جميع الخطوط</option>
+              <option value="1">خط 01 (زهراء أكتوبر - الحصري)</option>
+              <option value="2">خط 02 (المجمع الطبي - الجامعة)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-outline" style="height: 42px;">
+            <i class="ri-filter-3-line"></i> تطبيق الفلتر
+          </button>
+        </form>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="stats-summary">
+        <div class="card">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">إجمالي الإيرادات</span>
+          <h3 style="font-size: 1.5rem; color: var(--primary); font-weight: 800; margin-top: 4px;">24,500 ج.م</h3>
+        </div>
+        <div class="card">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">عدد الركاب</span>
+          <h3 style="font-size: 1.5rem; color: var(--secondary); font-weight: 800; margin-top: 4px;">2,450 راكب</h3>
+        </div>
+        <div class="card">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">إجمالي الرحلات</span>
+          <h3 style="font-size: 1.5rem; color: var(--accent); font-weight: 800; margin-top: 4px;">120 رحلة</h3>
+        </div>
+        <div class="card">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">نسبة الإشغال</span>
+          <h3 style="font-size: 1.5rem; color: var(--warning); font-weight: 800; margin-top: 4px;">88.5%</h3>
+        </div>
+      </div>
+
+      <!-- Detail Report Table -->
+      <div class="card">
+        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">
+          <i class="ri-file-chart-line" style="color: var(--primary);"></i> تقرير أداء الخطوط الفردي
+        </h3>
+
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>الخط</th>
+                <th>عدد الرحلات</th>
+                <th>إجمالي الركاب</th>
+                <th>الإيراد اليومي</th>
+                <th>معدل الالتزام</th>
+                <th>التقييم</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>خط 01 (زهراء أكتوبر - الحصري)</strong></td>
+                <td>68 رحلة</td>
+                <td>1,420 راكب</td>
+                <td>14,200 ج.م</td>
+                <td><span style="color: var(--primary); font-weight: 700;">98%</span></td>
+                <td><span class="badge badge-success">ممتاز</span></td>
+              </tr>
+              <tr>
+                <td><strong>خط 02 (المجمع الطبي - الجامعة)</strong></td>
+                <td>52 رحلة</td>
+                <td>1,030 راكب</td>
+                <td>12,360 ج.م</td>
+                <td><span style="color: var(--primary); font-weight: 700;">95%</span></td>
+                <td><span class="badge badge-success">جيد جداً</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

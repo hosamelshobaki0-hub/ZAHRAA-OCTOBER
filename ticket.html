@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تذاكري | منصة زهراء أكتوبر الرقمية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i><span>الرئيسية</span></a></li>
+      <li><a href="ticket.html" class="nav-link active"><i class="ri-ticket-2-line"></i><span>تذاكري</span></a></li>
+      <li><a href="subscriptions.html" class="nav-link"><i class="ri-wallet-3-line"></i><span>الاشتراكات المحفظة</span></a></li>
+      <li><a href="lost-and-found.html" class="nav-link"><i class="ri-find-replace-line"></i><span>المفقودات</span></a></li>
+      <li><a href="notifications.html" class="nav-link nav-icon-badge"><i class="ri-notification-3-line"></i><span>الإشعارات</span><span class="badge-dot"></span></a></li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i><span>المتاجر</span></a></li>
+      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i><span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i><span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="login.html" class="nav-link"><i class="ri-user-3-line"></i><span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="app-container">
+    <section class="page-intro glass-card">
+      <div class="page-intro-text">
+        <span class="badge badge-success"><i class="ri-ticket-2-line"></i> تذاكر الرحلات</span>
+        <h1>تذاكري</h1>
+        <p>تابع رحلاتك المخصصة، وحدد موعد العودة، وراجع معلومات الحجز.</p>
+      </div>
+      <div class="page-intro-actions">
+        <a class="btn btn-primary" href="search.html"><i class="ri-search-line"></i>بحث عن رحلة جديدة</a>
+      </div>
+    </section>
+
+    <section class="ticket-list">
+      <article class="ticket-card card">
+        <div class="ticket-card-head">
+          <span class="ticket-status confirmed">مؤكد</span>
+          <span class="ticket-date">الأحد 13 سبتمبر 2026</span>
+        </div>
+        <div class="ticket-card-content">
+          <div>
+            <span class="ticket-label">رقم الرحلة</span>
+            <h3 class="ticket-title">الخط الأخضر - الرحلة 042</h3>
+          </div>
+          <div class="ticket-route">
+            <span><i class="ri-map-pin-2-line"></i> محطة المجمع الطبي</span>
+            <i class="ri-arrow-left-line"></i>
+            <span><i class="ri-map-pin-5-line"></i> ميدان الحصري</span>
+          </div>
+          <div class="ticket-details">
+            <span><i class="ri-time-line"></i> 08:30 صباحاً</span>
+            <span><i class="ri-bus-line"></i> الحافلة 12</span>
+            <span><i class="ri-wallet-3-line"></i> 5 ريال</span>
+          </div>
+        </div>
+        <div class="ticket-card-actions">
+          <a class="btn btn-outline" href="route-details.html"><i class="ri-map-pin-line"></i> تفاصيل الخط</a>
+          <button class="btn btn-secondary"><i class="ri-download-2-line"></i> تحميل التذكرة</button>
+        </div>
+      </article>
+
+      <article class="ticket-card card">
+        <div class="ticket-card-head">
+          <span class="ticket-status pending">قيد الانتظار</span>
+          <span class="ticket-date">الأربعاء 16 سبتمبر 2026</span>
+        </div>
+        <div class="ticket-card-content">
+          <div>
+            <span class="ticket-label">رقم الرحلة</span>
+            <h3 class="ticket-title">الخط الأزرق - الرحلة 021</h3>
+          </div>
+          <div class="ticket-route">
+            <span><i class="ri-map-pin-2-line"></i> جامعة 6 أكتوبر</span>
+            <i class="ri-arrow-left-line"></i>
+            <span><i class="ri-map-pin-5-line"></i> المدخل الرئيسي</span>
+          </div>
+          <div class="ticket-details">
+            <span><i class="ri-time-line"></i> 12:15 ظهراً</span>
+            <span><i class="ri-bus-line"></i> الحافلة 08</span>
+            <span><i class="ri-wallet-3-line"></i> 7 ريال</span>
+          </div>
+        </div>
+        <div class="ticket-card-actions">
+          <a class="btn btn-outline" href="route-details.html"><i class="ri-map-pin-line"></i> تفاصيل الخط</a>
+          <button class="btn btn-secondary"><i class="ri-download-2-line"></i> تحميل التذكرة</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-ticket-2-line"></i></span>
+        <span class="mini-stat-value">02</span>
+        <span class="mini-stat-label">رحلات مؤكدة</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-wallet-3-line"></i></span>
+        <span class="mini-stat-value">12</span>
+        <span class="mini-stat-label">رصيد المحفظة</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-notification-3-line"></i></span>
+        <span class="mini-stat-value">03</span>
+        <span class="mini-stat-label">إشعارات جديدة</span>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

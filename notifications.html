@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإشعارات | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <style>
+    .notifications-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .notification-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .notification-item.unread {
+      background: var(--surface);
+      border-right: 4px solid var(--primary);
+    }
+
+    .notification-item.read {
+      background: rgba(255, 255, 255, 0.6);
+      opacity: 0.85;
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .icon-info { background: #E0F2FE; color: var(--accent); }
+    .icon-warning { background: #FEF3C7; color: var(--warning); }
+    .icon-success { background: var(--primary-light); color: var(--primary); }
+    .icon-danger { background: #FEE2E2; color: var(--danger); }
+
+    .notification-time {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active {
+      background: var(--secondary);
+      color: #FFFFFF;
+      border-color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i> <span>الرئيسية</span></a></li>
+      <li><a href="search.html" class="nav-link"><i class="ri-search-2-line"></i> <span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link"><i class="ri-map-pin-user-line"></i> <span>الخريطة</span></a></li>
+      <li>
+        <a href="notifications.html" class="nav-link active nav-icon-badge">
+          <i class="ri-notification-3-line"></i> <span>الإشعارات</span>
+          <span class="badge-dot"></span>
+        </a>
+      </li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i> <span>المتاجر</span></a></li>
+      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i> <span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i> <span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="profile.html" class="nav-link"><i class="ri-user-3-line"></i> <span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container" style="max-width: 800px;">
+    
+    <div class="notifications-header">
+      <div>
+        <h2 style="font-weight: 800; color: var(--secondary); font-size: 1.4rem;">مركز الإشعارات</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">تابع أحدث التحديثات الخاصة بالحافلات والرحلات اليومية</p>
+      </div>
+      <button class="btn btn-outline" style="padding: 8px 14px; font-size: 0.85rem;" onclick="markAllAsRead()">
+        <i class="ri-checkbox-double-line"></i> تحديد الكل كقروء
+      </button>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab-btn active">الكل</button>
+      <button class="tab-btn">غير مقروءة</button>
+      <button class="tab-btn">تحديثات الخطوط</button>
+    </div>
+
+    <!-- Notifications List -->
+    <div id="notificationsList">
+      
+      <!-- Notification 1 -->
+      <div class="card notification-item unread">
+        <div class="icon-box icon-warning">
+          <i class="ri-time-line"></i>
+        </div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <h4 style="font-size: 0.98rem; font-weight: 700;">تأخير طفيف في خط 01</h4>
+            <span class="badge badge-warning">تحديث زمني</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 4px;">
+            نود إعلامكم بتأخير حافلة خط 01 المتجهة لميدان الحصري لمدة 5 دقائق بسبب ازدحام المجمع الطبي.
+          </p>
+          <div class="notification-time"><i class="ri-history-line"></i> منذ 10 دقائق</div>
+        </div>
+      </div>
+
+      <!-- Notification 2 -->
+      <div class="card notification-item unread">
+        <div class="icon-box icon-success">
+          <i class="ri-bus-fill"></i>
+        </div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <h4 style="font-size: 0.98rem; font-weight: 700;">إضافة حافلة إضافية</h4>
+            <span class="badge badge-success">خدمة جديدة</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 4px;">
+            تم إطلاق حافلة إضافية رقم #105 على خط 02 لتلبية كثرة الإقبال في ساعات الذروة.
+          </p>
+          <div class="notification-time"><i class="ri-history-line"></i> منذ ساعة واحدة</div>
+        </div>
+      </div>
+
+      <!-- Notification 3 -->
+      <div class="card notification-item read">
+        <div class="icon-box icon-info">
+          <i class="ri-information-line"></i>
+        </div>
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <h4 style="font-size: 0.98rem; font-weight: 700;">جدول مواعيد يوم الجمعة</h4>
+            <span class="badge badge-info">تنبيه عام</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-main); margin-top: 4px;">
+            يرجى العلم أن مواعيد الانطلاق يوم الجمعة تبدأ من الساعة 08:00 صباحاً بدلاً من 06:30 صباحاً.
+          </p>
+          <div class="notification-time"><i class="ri-history-line"></i> بالأمس</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+  <script>
+    function markAllAsRead() {
+      document.querySelectorAll('.notification-item').forEach(item => {
+        item.classList.remove('unread');
+        item.classList.add('read');
+      });
+    }
+  </script>
+</body>
+</html>

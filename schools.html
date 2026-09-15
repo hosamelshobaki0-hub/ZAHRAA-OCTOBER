@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المدارس والحضانات والأندية | منصة زهراء أكتوبر الرقمية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i><span>الرئيسية</span></a></li>
+      <li><a href="ticket.html" class="nav-link"><i class="ri-ticket-2-line"></i><span>تذاكري</span></a></li>
+      <li><a href="search.html" class="nav-link"><i class="ri-search-2-line"></i><span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link"><i class="ri-map-pin-user-line"></i><span>الخريطة</span></a></li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i><span>المتاجر</span></a></li>
+      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i><span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link active"><i class="ri-graduation-cap-line"></i><span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="login.html" class="nav-link"><i class="ri-user-3-line"></i><span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="app-container">
+    <section class="page-intro glass-card">
+      <div class="page-intro-text">
+        <span class="badge badge-success"><i class="ri-graduation-cap-line"></i> منظومة تعليمية ورياضية</span>
+        <h1>المدارس، الحضانات، والأندية</h1>
+        <p>خدمة متكاملة لتنظيم رحلات المدارس، حضور الحضانات، واختيارات الأنشطة والأندية داخل المدينة.</p>
+      </div>
+      <div class="page-intro-actions">
+        <a href="#school-services" class="btn btn-primary"><i class="ri-graduation-cap-fill"></i> تصفح الخدمات</a>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-school-line"></i></span>
+        <span class="mini-stat-value">12</span>
+        <span class="mini-stat-label">مدارس وحضانات</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-trophy-line"></i></span>
+        <span class="mini-stat-value">08</span>
+        <span class="mini-stat-label">أندية وأنشطة</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-time-line"></i></span>
+        <span class="mini-stat-value">24/7</span>
+        <span class="mini-stat-label">تتبع رحلات</span>
+      </article>
+    </section>
+
+    <section class="card" id="school-services">
+      <div class="panel-heading">
+        <span>الخدمات التعليمية والرياضية</span>
+        <span class="badge badge-success">Education & Clubs</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; padding: 16px 0;">
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-school-line"></i></div>
+          <h4>تنظيم رحلات المدارس</h4>
+          <p>جدولة الحافلات، متابعة الانطلاق، وتخصيص محطات مناسبة للطلاب.</p>
+          <span class="badge badge-success">رحلات يومية</span>
+        </article>
+
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-baby-line"></i></div>
+          <h4>الحضانات</h4>
+          <p>خدمة انضمام حضانات ومرحلتي الحضور والعودة مع إشعارات.</p>
+          <span class="badge badge-info">مراقبة وصول</span>
+        </article>
+
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-trophy-line"></i></div>
+          <h4>الأندية والأنشطة</h4>
+          <p>إدارة جداول الأندية، التمرينات، الرحلات الرياضية والفعاليات.</p>
+          <span class="badge badge-warning">أنشطة مجتمعية</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="panel-heading">
+        <span>خدمات الطلبات</span>
+        <span class="badge badge-soft">Request Flow</span>
+      </div>
+
+      <div class="form-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="form-group">
+          <label class="form-label"><i class="ri-school-line"></i> نوع الخدمة</label>
+          <select class="form-control">
+            <option>رحلة مدرسة</option>
+            <option>حضانة</option>
+            <option>نادي</option>
+            <option>نشاط مجتمعي</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><i class="ri-map-pin-line"></i> الحي أو المحطة</label>
+          <select class="form-control">
+            <option>حي اللوتس</option>
+            <option>حي الفيروز</option>
+            <option>حي الزهور</option>
+            <option>غرب المطار</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label"><i class="ri-calendar-line"></i> اليوم</label>
+          <input class="form-control" type="date">
+        </div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <button class="btn btn-primary"><i class="ri-send-plane-line"></i> إرسال طلب</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

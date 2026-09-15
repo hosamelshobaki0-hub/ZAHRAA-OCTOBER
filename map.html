@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الخريطة الحية | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    /* Full Map Layout Setup */
+    .map-container-wrapper {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 140px);
+      min-height: 500px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    #liveMap {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Floating Card Overlay */
+    .map-overlay-card {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 320px;
+      padding: 20px;
+    }
+
+    .map-controls-floating {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .map-btn {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .map-btn:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .map-route-select {
+      width: 100%;
+      margin: 12px 0 10px;
+    }
+
+    .map-service-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .service-chip {
+      background: var(--surface);
+      color: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .service-chip.active,
+    .service-chip:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .custom-station-box {
+      border-top: 1px solid var(--border);
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+
+    .custom-station-box .form-label {
+      font-size: 0.82rem;
+      color: var(--secondary);
+    }
+
+    #chosenStationName {
+      display: block;
+      background: var(--bg-color);
+      color: var(--secondary);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.84rem;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .custom-station-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .custom-station-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--secondary);
+    }
+
+    .custom-station-row .station-text {
+      flex: 1;
+    }
+
+    .custom-station-row .station-route-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
+
+    .custom-station-row button {
+      background: var(--danger);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.76rem;
+    }
+
+    @media (max-width: 768px) {
+      .map-overlay-card {
+        top: auto;
+        bottom: 20px;
+        right: 15px;
+        left: 15px;
+        width: auto;
+      }
+      .map-controls-floating {
+        bottom: 180px;
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i> <span>الرئيسية</span></a></li>
+      <li><a href="search.html" class="nav-link"><i class="ri-search-2-line"></i> <span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link active"><i class="ri-map-pin-user-line"></i> <span>الخريطة</span></a></li>
+      <li>
+        <a href="notifications.html" class="nav-link nav-icon-badge">
+          <i class="ri-notification-3-line"></i> <span>الإشعارات</span>
+          <span class="badge-dot"></span>
+        </a>
+      </li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i> <span>المتاجر</span></a></li>
+      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i> <span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i> <span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="profile.html" class="nav-link"><i class="ri-user-3-line"></i> <span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="app-container" style="padding-bottom: 20px;">
+    
+    <div class="map-container-wrapper">
+      
+      <!-- Interactive Leaflet Map Div -->
+      <div id="liveMap"></div>
+
+      <!-- Floating Live Vehicle Info Overlay -->
+      <div class="glass-card map-overlay-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <span class="badge badge-success"><i class="ri-radar-line"></i> تتبع مباشر</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">حافلة رقم #102</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">حدد الخط</label>
+          <select id="routeMapSelect" class="form-control map-route-select">
+            <option value="route01" selected>خط 01: زهراء أكتوبر ↔ الحصري</option>
+            <option value="route02">خط 02: المجمع الطبي ↔ جامعة 6 أكتوبر</option>
+            <option value="route03">خط 03: المحطة الرئيسية ↔ نادي الداخلية</option>
+            <option value="routeDelivery">دليفري وشراء السلع</option>
+            <option value="routeSchool">مدارس و حضانات و أندية</option>
+          </select>
+        </div>
+
+        <div class="map-service-filter">
+          <button class="service-chip active" type="button" data-service="all">الكل</button>
+          <button class="service-chip" type="button" data-service="bus">النقل</button>
+          <button class="service-chip" type="button" data-service="school">مدارس</button>
+          <button class="service-chip" type="button" data-service="delivery">دليفري</button>
+          <button class="service-chip" type="button" data-service="charter">مشاوير</button>
+        </div>
+
+        <div class="custom-station-box">
+          <div class="form-group">
+            <label class="form-label">اسم المحطة</label>
+            <input type="text" id="stationNameInput" class="form-control" value="محطة جديدة" placeholder="اكتب اسم المحطة">
+          </div>
+          <div class="form-group">
+            <label class="form-label">المحطة المختارة</label>
+            <span id="chosenStationName">لم يتم اختيار محطة</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">اختر الخط المرتبط بالمحطة</label>
+            <select id="stationRouteSelect" class="form-control">
+              <option value="route01" selected>خط 01: زهراء أكتوبر ↔ الحصري</option>
+              <option value="route02">خط 02: المجمع الطبي ↔ جامعة 6 أكتوبر</option>
+              <option value="route03">خط 03: المحطة الرئيسية ↔ نادي الداخلية</option>
+              <option value="routeDelivery">دليفري وشراء السلع</option>
+              <option value="routeSchool">مدارس و حضانات و أندية</option>
+            </select>
+          </div>
+          <button id="addStationOnMap" class="btn btn-outline" style="width: 100%; height: 38px;">
+            <i class="ri-map-pin-add-line"></i> اختر المحطة من الخريطة
+          </button>
+
+          <div class="custom-station-list" id="customStationList">
+            <div class="custom-station-row">
+              <span class="station-text">محطة المدخل الرئيسي</span>
+              <span class="station-route-tag">خط 01</span>
+              <button type="button" data-remove="0"><i class="ri-delete-bin-line"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="selectedRouteTitle" style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin: 16px 0 4px;">
+          خط 01: زهراء أكتوبر ↔ الحصري
+        </h3>
+        <p id="selectedRouteMeta" style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 14px;">
+          السائق: كابتن أحمد محمود
+        </p>
+
+        <div style="background: var(--bg-color); padding: 10px; border-radius: var(--radius-sm); margin-bottom: 14px; display: flex; justify-content: space-around; text-align: center;">
+          <div>
+            <span id="nextStation" style="font-size: 0.75rem; color: var(--text-muted); display: block;">المحطة القادمة</span>
+            <strong id="nextStationValue" style="font-size: 0.9rem; color: var(--primary);">المركز الطبي</strong>
+          </div>
+          <div style="border-right: 1px solid var(--border); padding-right: 12px;">
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">الوصول خلال</span>
+            <strong id="arrivalTime" style="font-size: 0.9rem; color: var(--secondary);">4 دقائق</strong>
+          </div>
+        </div>
+
+        <a href="route-details.html" class="btn btn-primary" style="width: 100%; height: 40px; font-size: 0.88rem;">
+          <i class="ri-information-line"></i> عرض تفاصيل الخط
+        </a>
+      </div>
+
+      <!-- Quick Action Buttons on Map -->
+      <div class="map-controls-floating">
+        <button class="map-btn" title="تحديد موقعي" onclick="locateUser()"><i class="ri-user-location-line"></i></button>
+        <button class="map-btn" title="تكبير" onclick="zoomIn()"><i class="ri-add-line"></i></button>
+        <button class="map-btn" title="تصغير" onclick="zoomOut()"><i class="ri-subtract-line"></i></button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Leaflet JS Library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Map Initialization Script -->
+  <script>
+    const map = L.map('liveMap').setView([29.965, 30.930], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    const busIcon = L.divIcon({
+      className: 'custom-bus-icon',
+      html: `<div style="background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid white;">
+              <i class="ri-bus-fill" style="font-size: 18px;"></i>
+             </div>`,
+      iconSize: [36, 36],
+      iconAnchor: [18, 18]
+    });
+
+    const stationIcon = L.divIcon({
+      className: 'custom-station-icon',
+      html: `<div style="background: var(--secondary); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white;">
+              <i class="ri-map-pin-2-fill" style="font-size: 12px;"></i>
+             </div>`,
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+
+    const routeData = {
+      route01: {
+        title: 'خط 01: زهراء أكتوبر ↔ الحصري',
+        meta: 'السائق: كابتن أحمد محمود',
+        nextStation: 'المركز الطبي',
+        arrival: '4 دقائق',
+        color: '#2E7D72',
+        service: 'bus',
+        coords: [[29.965, 30.930], [29.963, 30.942], [29.960, 30.954], [29.955, 30.966]],
+        stations: ['مدخل زهراء أكتوبر', 'المركز الطبي', 'ميدان الحصري']
+      },
+      route02: {
+        title: 'خط 02: المجمع الطبي ↔ جامعة 6 أكتوبر',
+        meta: 'السائق: كابتن سامي ناصر',
+        nextStation: 'جامعة 6 أكتوبر',
+        arrival: '8 دقائق',
+        color: '#2563EB',
+        service: 'bus',
+        coords: [[29.969, 30.918], [29.966, 30.930], [29.964, 30.946], [29.961, 30.958]],
+        stations: ['المجمع الطبي', 'جامعة 6 أكتوبر']
+      },
+      route03: {
+        title: 'خط 03: المحطة الرئيسية ↔ نادي الداخلية',
+        meta: 'السائق: معاذ يوسف',
+        nextStation: 'حي اللوتس',
+        arrival: '11 دقائق',
+        color: '#9B5DE5',
+        service: 'bus',
+        coords: [[29.970, 30.920], [29.968, 30.930], [29.964, 30.940], [29.962, 30.950], [29.958, 30.963]],
+        stations: ['المحطة الرئيسية', 'حي اللوتس', 'حي الفيروز', 'حي الزهور', 'غرب المطار', 'نادي الداخلية']
+      },
+      routeDelivery: {
+        title: 'الدليفري وشراء السلع',
+        meta: 'منطقة خدمة: زهراء أكتوبر',
+        nextStation: 'توصيل المنزل',
+        arrival: '25 دقائق',
+        color: '#F59E0B',
+        service: 'delivery',
+        coords: [[29.970, 30.922], [29.968, 30.930], [29.966, 30.939]],
+        stations: ['مركز الطلبات', 'توصيل السلع']
+      },
+      routeSchool: {
+        title: 'مدارس و حضانات و أندية',
+        meta: 'تنظيم رحلات ومواعيد دورية',
+        nextStation: 'مدرسة زهراء',
+        arrival: '6 دقائق',
+        color: '#0EA5E9',
+        service: 'school',
+        coords: [[29.964, 30.926], [29.966, 30.936], [29.969, 30.945]],
+        stations: ['مدرسة زهراء', 'الحضانة', 'النادي']
+      }
+    };
+
+    let activeRoute = null;
+
+    function drawRoute(key) {
+      if (activeRoute) {
+        map.removeLayer(activeRoute);
+      }
+
+      const route = routeData[key] || routeData.route01;
+      activeRoute = L.polyline(route.coords, {
+        color: route.color,
+        weight: 4,
+        opacity: 0.9,
+        dashArray: route.service === 'delivery' ? '10 8' : null
+      }).addTo(map);
+
+      const routeTitle = document.getElementById('selectedRouteTitle');
+      const routeMeta = document.getElementById('selectedRouteMeta');
+      const nextStation = document.getElementById('nextStationValue');
+      const arrival = document.getElementById('arrivalTime');
+
+      routeTitle.textContent = route.title;
+      routeMeta.textContent = route.meta;
+      nextStation.textContent = route.nextStation;
+      arrival.textContent = route.arrival;
+
+      const busMarker = L.marker(route.coords[0], { icon: busIcon }).addTo(map)
+        .bindPopup('<b>' + route.title + '</b><br>' + route.meta)
+        .openPopup();
+
+      route.stations.forEach((name, index) => {
+        const coord = route.coords[Math.min(index, route.coords.length - 1)];
+        L.marker(coord, { icon: stationIcon }).addTo(map).bindPopup('محطة: ' + name);
+      });
+    }
+
+    const routeSelector = document.getElementById('routeMapSelect');
+    routeSelector.addEventListener('change', function() {
+      const selectedRoute = this.value;
+      drawRoute(selectedRoute);
+    });
+
+    const busMarker = L.marker([29.965, 30.930], { icon: busIcon }).addTo(map)
+      .bindPopup('<b>حافلة رقم #102</b><br>متجهة إلى ميدان الحصري')
+      .openPopup();
+
+    L.marker([29.970, 30.920], { icon: stationIcon }).addTo(map).bindPopup('محطة: المدخل الرئيسي');
+    L.marker([29.960, 30.940], { icon: stationIcon }).addTo(map).bindPopup('محطة: المجمع الطبي');
+
+    const stationNameInput = document.getElementById('stationNameInput');
+    const chosenStationName = document.getElementById('chosenStationName');
+    const addStationButton = document.getElementById('addStationOnMap');
+    const stationRouteSelect = document.getElementById('stationRouteSelect');
+    const customStationList = document.getElementById('customStationList');
+
+    let customMapStationMarkers = [];
+    let customStations = [];
+
+    function getRouteShortName(key) {
+      if (key === 'route01') return 'خط 01';
+      if (key === 'route02') return 'خط 02';
+      if (key === 'route03') return 'خط 03';
+      if (key === 'routeDelivery') return 'دليفري';
+      if (key === 'routeSchool') return 'مدارس';
+      return 'خط جديد';
+    }
+
+    function renderCustomStations() {
+      customStationList.innerHTML = '';
+      customStations.forEach((station, index) => {
+        const row = document.createElement('div');
+        row.className = 'custom-station-row';
+        row.innerHTML = '<span class="station-text">' + station.name + '</span>' +
+          '<span class="station-route-tag">' + getRouteShortName(station.routeKey) + '</span>' +
+          '<button type="button" data-remove="' + index + '"><i class="ri-delete-bin-line"></i></button>';
+        customStationList.appendChild(row);
+      });
+    }
+
+    function addStationFromMapLocation(latlng) {
+      const stationName = stationNameInput.value.trim() || 'محطة جديدة';
+      const selectedRoute = stationRouteSelect.value;
+      const marker = L.marker(latlng, { icon: stationIcon }).addTo(map)
+        .bindPopup('محطة: ' + stationName + '<br>خط: ' + getRouteShortName(selectedRoute))
+        .openPopup();
+
+      customMapStationMarkers.push(marker);
+      customStations.push({ name: stationName, routeKey: selectedRoute, marker: marker });
+      chosenStationName.textContent = stationName;
+      marker.bindPopup('محطة: ' + stationName + '<br>خط: ' + getRouteShortName(selectedRoute));
+      renderCustomStations();
+    }
+
+    addStationButton.addEventListener('click', function() {
+      chosenStationName.textContent = stationNameInput.value.trim() || 'محطة جديدة';
+      alert('انقر على الخريطة لتحديد موقع المحطة: ' + (stationNameInput.value.trim() || 'محطة جديدة'));
+    });
+
+    map.on('click', function(e) {
+      if (stationNameInput.value.trim() !== '') {
+        addStationFromMapLocation(e.latlng);
+      } else {
+        alert('يرجى كتابة اسم المحطة أولاً');
+      }
+    });
+
+    customStationList.addEventListener('click', function(e) {
+      const button = e.target.closest('button[data-remove]');
+      if (!button) return;
+      const idx = Number(button.getAttribute('data-remove'));
+      if (customStations[idx]) {
+        const station = customStations[idx];
+        if (station.marker) {
+          map.removeLayer(station.marker);
+        }
+        customStations.splice(idx, 1);
+        renderCustomStations();
+      }
+    });
+
+    document.querySelectorAll('.service-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        const service = this.dataset.service;
+        document.querySelectorAll('.service-chip').forEach(c => c.classList.toggle('active', c === this));
+        const keys = Object.keys(routeData);
+        const visible = keys.filter(k => service === 'all' || routeData[k].service === service);
+        if (visible.length > 0) {
+          const first = visible[0];
+          routeSelector.value = first;
+          drawRoute(first);
+        }
+      });
+    });
+
+    function zoomIn() { map.zoomIn(); }
+    function zoomOut() { map.zoomOut(); }
+    function locateUser() {
+      map.locate({setView: true, maxZoom: 16});
+    }
+
+    drawRoute('route01');
+  </script>
+  <script src="js/sync.js"></script>
+
+</body>
+</html>

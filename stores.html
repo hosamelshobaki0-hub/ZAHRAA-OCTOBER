@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المتاجر الخاصة | منصة زهراء أكتوبر الرقمية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i><span>الرئيسية</span></a></li>
+      <li><a href="search.html" class="nav-link"><i class="ri-search-2-line"></i><span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link"><i class="ri-map-pin-user-line"></i><span>الخريطة</span></a></li>
+      <li><a href="private-charters.html" class="nav-link"><i class="ri-car-line"></i><span>المشاوير الخاصة</span></a></li>
+      <li><a href="delivery.html" class="nav-link"><i class="ri-shopping-bag-line"></i><span>الدليفري</span></a></li>
+      <li><a href="stores.html" class="nav-link active"><i class="ri-store-2-line"></i><span>المتاجر</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i><span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="login.html" class="nav-link"><i class="ri-user-3-line"></i><span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="app-container">
+    <section class="page-intro glass-card">
+      <div class="page-intro-text">
+        <span class="badge badge-success"><i class="ri-store-2-line"></i> متجر زهراء</span>
+        <h1>المتاجر الخاصة بزهراء أكتوبر</h1>
+        <p>نظام متكامل لعرض المتاجر المحلية، السلع اليومية، الطلبات، والتوصيل داخل المدينة.</p>
+      </div>
+      <div class="page-intro-actions">
+        <a href="#stores" class="btn btn-primary"><i class="ri-store-line"></i> تصفح المتاجر</a>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-store-2-line"></i></span>
+        <span class="mini-stat-value">12+</span>
+        <span class="mini-stat-label">متجر محلي</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-shopping-cart-2-line"></i></span>
+        <span class="mini-stat-value">24/7</span>
+        <span class="mini-stat-label">طلبات السلع</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-truck-line"></i></span>
+        <span class="mini-stat-value">30m</span>
+        <span class="mini-stat-label">توصيل سريع</span>
+      </article>
+    </section>
+
+    <section class="card" id="stores">
+      <div class="panel-heading">
+        <span>المتاجر الخاصة</span>
+        <span class="badge badge-success">المتاجر المحلية</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; padding: 16px 0;">
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-leaf-line"></i></div>
+          <h4>سوبر ماركت اليوم</h4>
+          <p>سلع منزلية، خضار، ألبان، ومنتجات يومية.</p>
+          <span class="badge badge-success">توصيل داخلي</span>
+        </article>
+
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-medicine-bottle-line"></i></div>
+          <h4>صيدلية الحي</h4>
+          <p>أدوية، منتجات صحية، وطلبات صيدلية سريعة.</p>
+          <span class="badge badge-warning">خدمة سريعة</span>
+        </article>
+
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-cake-3-line"></i></div>
+          <h4>مخبز الحي</h4>
+          <p>خبز طازج، حلويات، ومخبوزات يومية.</p>
+          <span class="badge badge-success">تجهيز سريع</span>
+        </article>
+
+        <article class="card service-card">
+          <div class="mini-stat-icon"><i class="ri-flower-line"></i></div>
+          <h4>متجر الزهور</h4>
+          <p>زهور، هدايا، وطلبات خاصة للفعاليات.</p>
+          <span class="badge badge-success">هدية</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="driver-grid">
+      <article class="card driver-card">
+        <div class="driver-card-head">
+          <span class="small-label">طلب جديد</span>
+          <span class="ticket-status confirmed">جاهز للتوصيل</span>
+        </div>
+        <h2 class="driver-title">طلب متجر</h2>
+        <div class="driver-route">
+          <span><i class="ri-store-2-line"></i> المتجر المختار</span>
+          <i class="ri-arrow-left-line"></i>
+          <span><i class="ri-home-4-line"></i> عنوان التوصيل</span>
+        </div>
+        <div class="driver-metadata">
+          <span><i class="ri-shopping-cart-2-line"></i> السلع اليومية</span>
+          <span><i class="ri-truck-line"></i> توصيل سريع</span>
+        </div>
+      </article>
+
+      <article class="card driver-card">
+        <div class="driver-card-head">
+          <span class="small-label">سلة الطلب</span>
+          <span class="ticket-status pending">قيد التحديد</span>
+        </div>
+        <ul class="route-schedule">
+          <li><span>خضار</span><span>03 عناصر</span></li>
+          <li><span>ألبان</span><span>05 عناصر</span></li>
+          <li><span>مخبوزات</span><span>02 عناصر</span></li>
+          <li><span>إجمالي</span><span>150 جنيه</span></li>
+        </ul>
+        <div class="ticket-card-actions">
+          <a href="delivery.html" class="btn btn-primary"><i class="ri-shopping-bag-line"></i> اطلب الآن</a>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

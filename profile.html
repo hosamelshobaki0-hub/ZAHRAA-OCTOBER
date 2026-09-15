@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الملف الشخصي | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <style>
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .avatar-box {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 16px;
+      border: 3px solid var(--primary);
+    }
+
+    .wallet-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+      color: #FFFFFF;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 24px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .setting-item:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 868px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i> <span>الرئيسية</span></a></li>
+      <li><a href="search.html" class="nav-link"><i class="ri-search-2-line"></i> <span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link"><i class="ri-map-pin-user-line"></i> <span>الخريطة</span></a></li>
+      <li>
+        <a href="notifications.html" class="nav-link nav-icon-badge">
+          <i class="ri-notification-3-line"></i> <span>الإشعارات</span>
+          <span class="badge-dot"></span>
+        </a>
+      </li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i> <span>المتاجر</span></a></li>
+      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i> <span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i> <span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="profile.html" class="nav-link active"><i class="ri-user-3-line"></i> <span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container">
+    
+    <div class="profile-grid">
+      
+      <!-- Right Sidebar: User Profile Card -->
+      <div class="card" style="text-align: center; padding: 28px 20px;">
+        <div class="avatar-box">
+          <i class="ri-user-fill"></i>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--secondary);">حسام الدين خالد</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">راكب دائم • زهراء أكتوبر</p>
+        
+        <span class="badge badge-success" style="margin-bottom: 20px;">
+          <i class="ri-shield-check-line"></i> حساب موثق
+        </span>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 16px; text-align: right; font-size: 0.88rem; display: flex; flex-direction: column; gap: 10px;">
+          <div>
+            <span style="color: var(--text-muted); display: block; font-size: 0.78rem;">رقم الهاتف</span>
+            <strong style="color: var(--secondary);">01012345678</strong>
+          </div>
+          <div>
+            <span style="color: var(--text-muted); display: block; font-size: 0.78rem;">البريد الإلكتروني</span>
+            <strong style="color: var(--secondary);">hosam@example.com</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-outline" style="width: 100%; margin-top: 20px; font-size: 0.85rem; padding: 8px;">
+          <i class="ri-edit-line"></i> تعديل البيانات
+        </button>
+      </div>
+
+      <!-- Left Main Content: Wallet & Settings -->
+      <div>
+        
+        <!-- Digital Wallet Card -->
+        <div class="wallet-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <span style="font-size: 0.85rem; opacity: 0.9;">محفظة الكارت الذكي</span>
+              <h2 style="font-size: 1.8rem; font-weight: 800; margin-top: 4px;">150.00 ج.م</h2>
+            </div>
+            <i class="ri-wallet-3-line" style="font-size: 2rem; opacity: 0.8;"></i>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <button class="btn" style="background: #FFFFFF; color: var(--primary-hover); padding: 8px 16px; font-size: 0.85rem;">
+              <i class="ri-add-circle-line"></i> شحن المحفظة
+            </button>
+            <button class="btn" style="background: rgba(255,255,255,0.2); color: #FFFFFF; padding: 8px 16px; font-size: 0.85rem;">
+              سجل المعاملات
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent Activity Section -->
+        <div class="card" style="margin-bottom: 24px;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">
+            <i class="ri-history-line" style="color: var(--primary);"></i> الرحلات الأخيرة
+          </h3>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
+              <div>
+                <strong style="font-size: 0.9rem; display: block;">خط 01 (زهراء أكتوبر ↔ الحصري)</strong>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">12 سبتمبر 2026 • 08:30 صباحاً</span>
+              </div>
+              <span style="font-weight: 700; color: var(--secondary);">10 ج.م</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
+              <div>
+                <strong style="font-size: 0.9rem; display: block;">خط 02 (المجمع الطبي ↔ الجامعة)</strong>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">10 سبتمبر 2026 • 02:15 مساءً</span>
+              </div>
+              <span style="font-weight: 700; color: var(--secondary);">12 ج.م</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Settings & Preferences -->
+        <div class="card">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">
+            إعدادات الحساب
+          </h3>
+
+          <div class="setting-item">
+            <div>
+              <strong style="font-size: 0.9rem; display: block;">إشعارات الوصول والتنبيهات</strong>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">تنبيهات اقتراب الحافلة من المحطة</span>
+            </div>
+            <input type="checkbox" checked style="accent-color: var(--primary); width: 18px; height: 18px;">
+          </div>
+
+          <div class="setting-item">
+            <div>
+              <strong style="font-size: 0.9rem; display: block; color: var(--danger);">تسجيل الخروج</strong>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">الخروج من هذا الجهاز</span>
+            </div>
+            <a href="login.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem; color: var(--danger); border-color: var(--danger);">
+              خروج
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

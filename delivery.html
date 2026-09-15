@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التوصيل وشراء السلع | منصة زهراء أكتوبر الرقمية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+        منصة <span>زهراء أكتوبر الرقمية</span>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i><span>الرئيسية</span></a></li>
+      <li><a href="search.html" class="nav-link"><i class="ri-search-2-line"></i><span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link"><i class="ri-map-pin-user-line"></i><span>الخريطة</span></a></li>
+      <li><a href="private-charters.html" class="nav-link"><i class="ri-car-line"></i><span>المشاوير الخاصة</span></a></li>
+      <li><a href="delivery.html" class="nav-link active"><i class="ri-shopping-bag-line"></i><span>التوصيل</span></a></li>
+      <li><a href="login.html" class="nav-link"><i class="ri-user-3-line"></i><span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="app-container">
+    <section class="page-intro glass-card">
+      <div class="page-intro-text">
+        <span class="badge badge-success"><i class="ri-shopping-bag-line"></i> خدمة التوصيل</span>
+        <h1>الدليفري وشراء السلع</h1>
+        <p>خدمة توصيل الطلبات داخل زهراء أكتوبر، مع إمكانية شراء المنتجات اليومية.</p>
+      </div>
+      <div class="page-intro-actions">
+        <a href="#delivery-order" class="btn btn-primary"><i class="ri-shopping-cart-line"></i> اطلب الآن</a>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-motorbike-line"></i></span>
+        <span class="mini-stat-value">02</span>
+        <span class="mini-stat-label">موتوسكليت/اسكوتر</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-truck-line"></i></span>
+        <span class="mini-stat-value">01</span>
+        <span class="mini-stat-label">عربية فان</span>
+      </article>
+      <article class="card mini-stat">
+        <span class="mini-stat-icon"><i class="ri-store-2-line"></i></span>
+        <span class="mini-stat-value">24/7</span>
+        <span class="mini-stat-label">شراء السلع</span>
+      </article>
+    </section>
+
+    <section class="driver-grid">
+      <article class="card driver-card">
+        <div class="driver-card-head">
+          <span class="small-label">نوع الخدمة</span>
+          <span class="ticket-status confirmed">توصيل سريع</span>
+        </div>
+        <h2 class="driver-title">توصيل الطعام والسلع</h2>
+        <div class="driver-route">
+          <span><i class="ri-map-pin-2-line"></i> المحطة الرئيسية</span>
+          <i class="ri-arrow-left-line"></i>
+          <span><i class="ri-store-2-line"></i> المنزل أو المتجر</span>
+        </div>
+        <div class="driver-metadata">
+          <span><i class="ri-motorbike-line"></i> موتوسكل/اسكوتر</span>
+          <span><i class="ri-truck-line"></i> فان</span>
+          <span><i class="ri-shopping-bag-line"></i> شراء السلع</span>
+        </div>
+      </article>
+
+      <article class="card driver-card">
+        <div class="driver-card-head">
+          <span class="small-label">خيارات الطلب</span>
+          <span class="ticket-status pending">جاهز</span>
+        </div>
+        <ul class="route-schedule">
+          <li><span>توصيل</span><span>طلب سريع</span></li>
+          <li><span>شراء</span><span>سلع منزلية</span></li>
+          <li><span>وقت التوصيل</span><span>30-60 دقيقة</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card" id="delivery-order" style="margin-top: 24px;">
+      <div class="panel-heading">
+        <span>طلب توصيل أو شراء سلعة</span>
+        <span class="badge badge-success">خدمة جديدة</span>
+      </div>
+      <form class="booking-form" onsubmit="event.preventDefault(); alert('تم تسجيل طلب التوصيل بنجاح، سيتم التواصل معك فوراً.'); this.reset();">
+        <div class="booking-grid">
+          <div class="form-group">
+            <label class="form-label">اسم العميل</label>
+            <input type="text" class="form-control" placeholder="الاسم الثلاثي" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">رقم الهاتف</label>
+            <input type="tel" class="form-control" placeholder="05XXXXXXXX" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">نوع الخدمة</label>
+            <select class="form-control" required>
+              <option value="">اختر الخدمة</option>
+              <option>توصيل طلب</option>
+              <option>شراء سلع</option>
+              <option>توصيل وشراء</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">نوع المركبة</label>
+            <select class="form-control" required>
+              <option value="">اختر نوع النقل</option>
+              <option>موتوسكل</option>
+              <option>اسكوتر</option>
+              <option>عربية فان</option>
+              <option>عربية الكيوتا</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">محطة الانطلاق</label>
+            <select class="form-control">
+              <option>المحطة الرئيسية</option>
+              <option>حي اللوتس</option>
+              <option>حي الفيروز</option>
+              <option>حي الزهور</option>
+              <option>غرب المطار</option>
+              <option>نادي الداخلية</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">وقت الاستلام</label>
+            <input type="time" class="form-control" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">وصف الطلب</label>
+          <textarea class="form-control" rows="4" placeholder="اكتب تفاصيل الطلب أو السلع المراد شراؤها..." required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary"><i class="ri-shopping-cart-line"></i> إرسال الطلب</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إدارة الحافلات والسائقين | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <style>
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--secondary);
+      color: #FFFFFF;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-brand span {
+      color: var(--primary);
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      color: #94A3B8;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .sidebar-link:hover, .sidebar-link.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+    }
+
+    .sidebar-link.active {
+      background: var(--primary);
+    }
+
+    .admin-main {
+      padding: 28px;
+      background: var(--bg-color);
+    }
+
+    .buses-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .admin-table th, .admin-table td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .admin-table th {
+      background: var(--bg-color);
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 992px) {
+      .admin-layout { grid-template-columns: 1fr; }
+      .buses-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <i class="ri-bus-wifi-line" style="color: var(--primary); font-size: 1.5rem;"></i>
+        زهراء <span>إدارة</span>
+      </div>
+
+      <a href="index.html" class="sidebar-link"><i class="ri-dashboard-3-line"></i> <span>لوحة الرئيسية</span></a>
+      <a href="routes-management.html" class="sidebar-link"><i class="ri-route-line"></i> <span>إدارة الخطوط</span></a>
+      <a href="buses.html" class="sidebar-link active"><i class="ri-bus-fill"></i> <span>الحافلات والسائقين</span></a>
+      <a href="private-charters.html" class="sidebar-link"><i class="ri-car-line"></i> <span>المشاوير الخاصة</span></a>
+        <a href="login.html" class="sidebar-link" style="color: var(--danger);"><i class="ri-logout-box-r-line"></i> <span>تسجيل الخروج</span></a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);">إدارة الحافلات والسائقين</h1>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">إدارة الأسطول، ربط السائقين بالحافلات، وتتبع حالة الصيانة</p>
+      </div>
+
+      <div class="buses-grid">
+
+        <!-- Bus List Table -->
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">
+            <i class="ri-bus-2-line" style="color: var(--primary);"></i> أسطول الحافلات المسجل
+          </h3>
+
+          <div style="overflow-x: auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>رقم الحافلة</th>
+                  <th>اللوحة المعدنية</th>
+                  <th>السائق تعيين</th>
+                  <th>الخط المخصص</th>
+                  <th>نوع المركبة</th>
+                  <th>الحالة</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#102</strong></td>
+                  <td>أ ب ج 1234</td>
+                  <td>أحمد محمود</td>
+                  <td>خط 01</td>
+                  <td>حافلة</td>
+                  <td><span class="badge badge-success">في الخدمة</span></td>
+                  <td>
+                    <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;"><i class="ri-edit-line"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#105</strong></td>
+                  <td>س ص ط 5678</td>
+                  <td>محمود عبد الله</td>
+                  <td>خط 02</td>
+                  <td>حافلة</td>
+                  <td><span class="badge badge-success">في الخدمة</span></td>
+                  <td>
+                    <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;"><i class="ri-edit-line"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#420</strong></td>
+                  <td>ع ر ك 7788</td>
+                  <td>سامي ناصر</td>
+                  <td>خدمة خاصة</td>
+                  <td>عربية كيوتا</td>
+                  <td><span class="badge badge-success">جاهزة</span></td>
+                  <td>
+                    <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;"><i class="ri-edit-line"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#511</strong></td>
+                  <td>م ح ت 1111</td>
+                  <td>خالد طارق</td>
+                  <td>خدمة توصيل</td>
+                  <td>موتوسكل</td>
+                  <td><span class="badge badge-success">جاهز</span></td>
+                  <td>
+                    <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;"><i class="ri-edit-line"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#112</strong></td>
+                  <td>د ذ ر 9101</td>
+                  <td>مصطفى حسن</td>
+                  <td>غير محدد</td>
+                  <td>حافلة</td>
+                  <td><span class="badge badge-danger">صيانة</span></td>
+                  <td>
+                    <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;"><i class="ri-edit-line"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Add Bus/Driver Form -->
+        <div class="card">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 16px;">
+            <i class="ri-user-add-line" style="color: var(--primary);"></i> تسجيل حافلة / سائق
+          </h3>
+
+          <form onsubmit="event.preventDefault(); alert('تم الحفظ بنجاح!'); this.reset();">
+            <div class="form-group">
+              <label class="form-label">رقم الحافلة الداخلي</label>
+              <input type="text" class="form-control" placeholder="مثال: #109" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">رقم اللوحة</label>
+              <input type="text" class="form-control" placeholder="مثال: ق ل م 4321" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">اسم السائق المسؤول</label>
+              <input type="text" class="form-control" placeholder="اسم الكابتن الثلاثي" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">نوع المركبة</label>
+              <select class="form-control">
+                <option>حافلة</option>
+                <option>موتوسكل</option>
+                <option>اسكوتر</option>
+                <option>عربية فان</option>
+                <option>عربية الكيوتا</option>
+                <option>خدمة الدليفري وشراء السلع</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">تخصيص الخط</label>
+              <select class="form-control">
+                <option value="1">خط 01 (زهراء أكتوبر - الحصري)</option>
+                <option value="2">خط 02 (المجمع الطبي - الجامعة)</option>
+                <option value="3">خط 03 (المحطة الرئيسية - نادي الداخلية)</option>
+                <option value="4">خدمة خاصة</option>
+                <option value="5">توصيل وشراء</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; height: 42px;">
+              <i class="ri-save-line"></i> حفظ البيانات
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

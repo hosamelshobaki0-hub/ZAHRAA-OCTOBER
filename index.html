@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الرئيسية | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link active"><i class="ri-home-5-line"></i> <span>الرئيسية</span></a></li>
+      <li><a href="ticket.html" class="nav-link"><i class="ri-ticket-2-line"></i> <span>تذاكري</span></a></li>
+      <li><a href="subscriptions.html" class="nav-link"><i class="ri-wallet-3-line"></i> <span>الاشتراكات المحفظة</span></a></li>
+      <li><a href="lost-and-found.html" class="nav-link"><i class="ri-find-replace-line"></i> <span>المفقودات</span></a></li>
+      <li>
+        <a href="notifications.html" class="nav-link nav-icon-badge">
+          <i class="ri-notification-3-line"></i> <span>الإشعارات</span>
+          <span class="badge-dot"></span>
+        </a>
+      </li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i> <span>المتاجر</span></a></li>      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i> <span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i> <span>المدارس والحضانات والأندية</span></a></li>      <li><a href="login.html" class="nav-link"><i class="ri-user-3-line"></i> <span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Section -->
+  <main class="app-container">
+    
+    <!-- Hero Box & Search Widget -->
+    <section class="home-hero glass-card">
+      <div class="home-hero-content">
+        <span class="badge badge-success home-badge">
+          <i class="ri-checkbox-circle-line"></i> خدمة نقل ذكي داخل زهراء أكتوبر
+        </span>
+        <h1>أين تريد الذهاب اليوم؟</h1>
+        <p class="hero-subtitle">
+          تتبع مواعيد الأوتوبيسات وزمن الوصول المتوقع بالدقيقة.
+        </p>
+
+        <form action="ticket.html" class="home-search-form">
+          <div class="form-group">
+            <label class="form-label"><i class="ri-map-pin-line"></i> محطة الانطلاق</label>
+            <select class="form-control" required>
+              <option value="">اختر محطة البداية...</option>
+              <option>المدخل الرئيسي - زهراء أكتوبر</option>
+              <option>محطة المجمع الطبي</option>
+              <option>محطة نادي إيجي سبورتنج</option>
+              <option>ميدان الحصري</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><i class="ri-map-pin-5-line"></i> محطة الوصول</label>
+            <select class="form-control" required>
+              <option value="">اختر الوجهة...</option>
+              <option>ميدان الحصري</option>
+              <option>جامعة 6 أكتوبر</option>
+              <option>محطة المجمع الطبي</option>
+              <option>المدخل الرئيسي - زهراء أكتوبر</option>
+            </select>
+          </div>
+
+          <div class="search-submit-wrap">
+            <button type="submit" class="btn btn-primary home-search-btn">
+              <i class="ri-search-line"></i> بحث وحجز الرحلة
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="hero-aside-card">
+          <div class="hero-aside-top">
+            <span class="hero-aside-icon"><i class="ri-route-line"></i></span>
+            <span class="hero-aside-title">خط اليوم</span>
+          </div>
+          <div class="hero-route-code">L-01</div>
+          <div class="hero-route-name">زهراء أكتوبر ↔ ميدان الحصري</div>
+          <div class="hero-route-meta">
+            <span><i class="ri-time-line"></i> 10 دقائق</span>
+            <span><i class="ri-bus-line"></i> 14 رحلة</span>
+          </div>
+          <div class="hero-aside-progress">
+            <span></span>
+          </div>
+          <a href="ticket.html" class="hero-aside-link">
+            <i class="ri-arrow-left-s-line"></i> عرض التذاكر
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- App Quick Services Grid -->
+    <h3 style="margin-bottom: 18px; font-weight: 700; color: var(--secondary);">الخدمات المتاحة</h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 36px;">
+      
+      <a href="ticket.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: var(--primary-light); color: var(--primary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-ticket-2-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">حجز التذاكر</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">حجز سريع ورقم الـ QR</p>
+        </div>
+      </a>
+
+      <a href="subscriptions.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #D1FAE5; color: #059669; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-wallet-3-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">الاشتراكات والمحفظة</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">تجديد وباقات ومحفظة</p>
+        </div>
+      </a>
+
+      <a href="lost-and-found.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #FEF3C7; color: var(--warning); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-find-replace-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">المفقودات والأمانات</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">بلاغ المعثورات والمفقودات</p>
+        </div>
+      </a>
+
+      <a href="private-charters.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #E0F2FE; color: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-car-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">المشاوير الخاصة</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">موتوسكل • اسكوتر • فان • عربية كيوتا</p>
+        </div>
+      </a>
+
+      <a href="delivery.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #FDE68A; color: var(--warning); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-shopping-bag-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">الدليفري وشراء السلع</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">توصيل الطلبات وشراء المنتجات</p>
+        </div>
+      </a>
+
+      <a href="stores.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #E0F2FE; color: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-store-2-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">المتاجر الخاصة</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">متاجر محلية وطلب سلعي سريع</p>
+        </div>
+      </a>
+
+      <a href="home-services.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #E0F2FE; color: var(--secondary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-tools-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">الخدمات المنزلية</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">صيانة • سباكة • كهرباء • نجارة</p>
+        </div>
+      </a>
+
+      <a href="schools.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #C7D2FE; color: var(--secondary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-graduation-cap-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">المدارس والحضانات والأندية</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">تنظيم رحلات ودورات تربوية ورياضية</p>
+        </div>
+      </a>
+
+      <a href="city-services.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #C7D2FE; color: var(--secondary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-city-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">خدمات المدينة الرقمية</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">نقل • دليفري • مدارس • أندية</p>
+        </div>
+      </a>
+
+      <a href="login.html" class="card" style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 48px; height: 48px; background: #E0F2FE; color: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="ri-shield-user-line"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1rem;">بوابة السائقين والإدارة</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">تسجيل دخول الطاقم</p>
+        </div>
+      </a>
+
+    </div>
+
+    <section class="ad-banner">
+      <div class="ad-banner-content">
+        <span class="badge badge-warning"><i class="ri-megaphone-line"></i> إعلان المنصة</span>
+        <h3 id="bannerTitle">عرض خاص لطلاب وموظفي زهراء أكتوبر</h3>
+        <p id="bannerDescription">خصم 30% على اشتراكات النقل والرحلات الدراسية، مع شحن ذكي للمحفظة ودعم مباشر عبر المنصة.</p>
+        <div class="ad-banner-actions">
+          <a id="bannerButton" href="subscriptions.html" class="btn btn-light"><i class="ri-wallet-3-line"></i> <span id="bannerButtonText">تفعيل العرض</span></a>
+          <a href="schools.html" class="btn btn-outline-light"><i class="ri-graduation-cap-line"></i> خدمات تعليمية</a>
+        </div>
+      </div>
+      <div class="ad-banner-image">
+        <img id="bannerImage" src="https://images.unsplash.com/photo-1552664730-cfec5f28eb9b?auto=format&fit=crop&w=1200&q=80" alt="بانر إعلاني" style="width:100%;max-width:260px;height:180px;object-fit:cover;border-radius:var(--radius-md);border:2px solid rgba(255,255,255,0.8);">
+      </div>
+    </section>
+
+    <!-- Active Live Routes Live Status Card -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 style="font-weight: 700; color: var(--secondary);">حالة الخطوط الآن</h3>
+      <a href="ticket.html" style="color: var(--primary); font-weight: 700; font-size: 0.9rem;">عرض الكل <i class="ri-arrow-left-s-line"></i></a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      
+      <!-- Route item 1 -->
+      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="background: var(--secondary); color: #fff; padding: 10px 14px; border-radius: var(--radius-sm); font-weight: 800; font-size: 1.1rem;">
+            L-01
+          </div>
+          <div>
+            <h4 style="font-size: 1rem;">زهراء أكتوبر ↔ ميدان الحصري</h4>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">يعمل الآن • زمن التقاطر: 10 دقائق</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="badge badge-success"><i class="ri-time-line"></i> يصل خلال 4 د</span>
+          <a href="ticket.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">حجز تذكرة</a>
+        </div>
+      </div>
+
+      <!-- Route item 2 -->
+      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="background: var(--secondary); color: #fff; padding: 10px 14px; border-radius: var(--radius-sm); font-weight: 800; font-size: 1.1rem;">
+            L-02
+          </div>
+          <div>
+            <h4 style="font-size: 1rem;">المجمع الطبي ↔ جامعة 6 أكتوبر</h4>
+            <p style="font-size: 0.83rem; color: var(--text-muted);">يعمل الآن • زمن التقاطر: 15 دقيقة</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="badge badge-success"><i class="ri-time-line"></i> يصل خلال 8 د</span>
+          <a href="ticket.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">حجز تذكرة</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/sync.js"></script>
+</body>
+</html>

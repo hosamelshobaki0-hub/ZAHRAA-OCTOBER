@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل الخط | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <style>
+    /* Route Details Custom Layout */
+    .route-header-card {
+      background: linear-gradient(135deg, var(--secondary) 0%, #1E293B 100%);
+      color: #FFFFFF;
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-container {
+      position: relative;
+      padding-right: 28px;
+      margin: 20px 0;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      right: 11px;
+      bottom: 10px;
+      width: 4px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      right: -28px;
+      top: 2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 4px solid var(--text-muted);
+      z-index: 2;
+    }
+
+    .timeline-item.active .timeline-dot {
+      border-color: var(--primary);
+      background: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
+    }
+
+    .timeline-item.completed .timeline-dot {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    .schedule-table th, .schedule-table td {
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .schedule-table th {
+      background: var(--bg-color);
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 868px) {
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <i class="ri-bus-wifi-line"></i>
+      منصة <span>زهراء أكتوبر الرقمية</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="ri-home-5-line"></i> <span>الرئيسية</span></a></li>
+      <li><a href="search.html" class="nav-link active"><i class="ri-search-2-line"></i> <span>بحث عن خط</span></a></li>
+      <li><a href="map.html" class="nav-link"><i class="ri-map-pin-user-line"></i> <span>الخريطة</span></a></li>
+      <li>
+        <a href="notifications.html" class="nav-link nav-icon-badge">
+          <i class="ri-notification-3-line"></i> <span>الإشعارات</span>
+          <span class="badge-dot"></span>
+        </a>
+      </li>
+      <li><a href="stores.html" class="nav-link"><i class="ri-store-2-line"></i> <span>المتاجر</span></a></li>
+      <li><a href="home-services.html" class="nav-link"><i class="ri-tools-line"></i> <span>الخدمات المنزلية</span></a></li>
+      <li><a href="schools.html" class="nav-link"><i class="ri-graduation-cap-line"></i> <span>المدارس والحضانات والأندية</span></a></li>
+      <li><a href="profile.html" class="nav-link"><i class="ri-user-3-line"></i> <span>حسابي</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- Header Section -->
+    <div class="route-header-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+        <span style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: var(--radius-sm); font-weight: 800; font-size: 1rem;">
+          خط 03
+        </span>
+        <span class="badge badge-success"><i class="ri-checkbox-circle-line"></i> يعمل الآن بكفاءة عالية</span>
+      </div>
+
+      <h1 style="font-size: 1.6rem; margin-bottom: 8px;">المحطة الرئيسية ↔ نادي الداخلية</h1>
+      <p style="color: #94A3B8; font-size: 0.95rem; margin-bottom: 20px;">
+        يمر عبر حي اللوتس - حي الفيروز - حي الزهور - غرب المطار - نادي الداخلية
+      </p>
+
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px;">
+        <div>
+          <span style="color: #94A3B8; font-size: 0.8rem; display: block;">سعر التذكرة</span>
+          <strong style="color: var(--primary); font-size: 1.2rem;">12 ج.م</strong>
+        </div>
+        <div>
+          <span style="color: #94A3B8; font-size: 0.8rem; display: block;">زمن الرحلة المتوقع</span>
+          <strong style="font-size: 1.1rem;">32 دقيقة</strong>
+        </div>
+        <div>
+          <span style="color: #94A3B8; font-size: 0.8rem; display: block;">معدل التقاطر</span>
+          <strong style="font-size: 1.1rem;">كل 15 دقيقة</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details Grid (Timeline + Sidebar Schedule) -->
+    <div class="details-grid">
+
+      <!-- Left Column: Stations Timeline -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary);">
+            <i class="ri-route-line" style="color: var(--primary);"></i> محطات الخط بالتفصيل
+          </h3>
+          <a href="map.html" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;">
+            <i class="ri-map-2-line"></i> الخريطة الحية
+          </a>
+        </div>
+
+        <div class="timeline-container">
+          
+          <!-- Station 1 -->
+          <div class="timeline-item completed">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700;">1. المحطة الرئيسية - زهراء أكتوبر</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">محطة القيام الأولى • نقطة البداية الرئيسية</p>
+            </div>
+            <span class="badge badge-info" style="font-size: 0.75rem;">انطلاق 07:00 ص</span>
+          </div>
+
+          <!-- Station 2 -->
+          <div class="timeline-item active">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700; color: var(--primary);">2. حي اللوتس</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">تقاطع حي اللوتس الرئيسي</p>
+            </div>
+            <span class="badge badge-success" style="font-size: 0.75rem;">الموقع الحالي</span>
+          </div>
+
+          <!-- Station 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700;">3. حي الفيروز</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">إشارة حي الفيروز</p>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">خلال 6 دقائق</span>
+          </div>
+
+          <!-- Station 4 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700;">4. حي الزهور</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">موقف حي الزهور</p>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">خلال 14 دقيقة</span>
+          </div>
+
+          <!-- Station 5 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700;">5. غرب المطار</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">محطة غرب المطار</p>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">خلال 22 دقيقة</span>
+          </div>
+
+          <!-- Station 6 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700;">6. نادي الداخلية</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">محطة الوصول النهائية</p>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">خلال 32 دقيقة</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div>
+              <h4 style="font-size: 0.98rem; font-weight: 700;">5. محطة ميدان الحصري</h4>
+              <p style="font-size: 0.82rem; color: var(--text-muted);">محطة الوصول النهائية</p>
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">خلال 22 دقيقة</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Daily Schedule & Info -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- Schedule Table Card -->
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; color: var(--secondary); margin-bottom: 12px;">
+            <i class="ri-time-line" style="color: var(--accent);"></i> جدول الانطلاق اليومي
+          </h3>
+
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>رقم الرحلة</th>
+                <th>وقت القيام</th>
+                <th>الحالة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#R-101</td>
+                <td>06:30 صباحاً</td>
+                <td><span style="color: var(--text-muted);">منتهية</span></td>
+              </tr>
+              <tr>
+                <td>#R-102</td>
+                <td>07:00 صباحاً</td>
+                <td><span style="color: var(--primary); font-weight: 700;">قيد الحركة</span></td>
+              </tr>
+              <tr>
+                <td>#R-103</td>
+                <td>07:15 صباحاً</td>
+                <td><span style="color: var(--accent);">قادمة</span></td>
+              </tr>
+              <tr>
+                <td>#R-104</td>
+                <td>07:30 صباحاً</td>
+                <td><span style="color: var(--accent);">قادمة</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Guidelines Card -->
+        <div class="card" style="background: var(--primary-light); border-color: rgba(16, 185, 129, 0.2);">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--primary-hover); margin-bottom: 8px;">
+            <i class="ri-information-fill"></i> تعليمات للركاب
+          </h4>
+          <ul style="font-size: 0.83rem; color: var(--text-main); display: flex; flex-direction: column; gap: 6px; padding-right: 18px; list-style-type: disc;">
+            <li>يرجى التواجد بموقع المحطة قبل الموعد بـ 3 دقائق.</li>
+            <li>الدفع متوفر نقداً أو عبر الكارت الذكي للخط.</li>
+            <li>لأي استفسار أو شكوى يرجى الضغط على قسم الدعم.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/sync.js"></script>
+</body>
+</html>

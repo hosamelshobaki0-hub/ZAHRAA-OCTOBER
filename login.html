@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول | منصة زهراء أكتوبر الرقمية</title>
+  <!-- CSS Reference -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <style>
+    /* Custom Styling for Login Page Setup */
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent 40%),
+                  radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.05), transparent 40%);
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 440px;
+      padding: 36px 28px;
+    }
+
+    .role-switcher {
+      display: flex;
+      background: var(--bg-color);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .role-btn {
+      flex: 1;
+      padding: 10px 8px;
+      border: none;
+      background: transparent;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .role-btn.active {
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .password-toggle {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="card auth-card glass-card">
+      
+      <!-- Logo & Header -->
+      <div style="text-align: center; margin-bottom: 28px;">
+        <a href="index.html" class="logo" style="justify-content: center; font-size: 1.6rem; margin-bottom: 8px;">
+          <i class="ri-bus-wifi-line"></i>
+          منصة <span>زهراء أكتوبر الرقمية</span>
+        </a>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">مرحباً بك! قم بتسجيل الدخول للمتابعة</p>
+      </div>
+
+      <!-- User Role Selector Switcher -->
+      <div class="role-switcher">
+        <button type="button" class="role-btn active" onclick="switchRole('passenger', this)">
+          <i class="ri-user-line"></i> راكب
+        </button>
+        <button type="button" class="role-btn" onclick="switchRole('driver', this)">
+          <i class="ri-steering-2-line"></i> سائق
+        </button>
+        <button type="button" class="role-btn" onclick="switchRole('admin', this)">
+          <i class="ri-shield-user-line"></i> آدمن
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" action="index.html">
+        <input type="hidden" id="userRole" value="passenger">
+
+        <!-- Phone / Username Field -->
+        <div class="form-group">
+          <label class="form-label" id="identifierLabel">رقم الهاتف أو البريد الإلكتروني</label>
+          <div class="input-wrapper">
+            <input type="text" class="form-control" placeholder="أدخل رقم الهاتف..." required style="padding-left: 40px;">
+            <i class="ri-mail-line password-toggle" style="left: auto; right: 14px; cursor: default;"></i>
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <label class="form-label">كلمة المرور</label>
+            <a href="#" style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">نسيت كلمة المرور؟</a>
+          </div>
+          <div class="input-wrapper">
+            <input type="password" id="passwordInput" class="form-control" placeholder="••••••••" required>
+            <i class="ri-eye-off-line password-toggle" id="togglePassword" onclick="togglePasswordVisibility()"></i>
+          </div>
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px; margin-top: 10px;">
+          <input type="checkbox" id="remember" style="accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer;">
+          <label for="remember" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer; font-weight: 600;">تذكر بياناتي على هذا الجهاز</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" style="width: 100%; height: 48px; font-size: 1rem;">
+          <i class="ri-login-box-line"></i> تسجيل الدخول
+        </button>
+      </form>
+
+      <!-- Back to Home Link -->
+      <div style="text-align: center; margin-top: 24px; font-size: 0.88rem;">
+        <span style="color: var(--text-muted);">ليس لديك حساب؟</span>
+        <a href="#" style="color: var(--primary); font-weight: 700; margin-right: 4px;">إنشاء حساب جديد</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript Interaction -->
+  <script>
+    // Toggle Password Visibility
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('passwordInput');
+      const toggleIcon = document.getElementById('togglePassword');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.className = 'ri-eye-line password-toggle';
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.className = 'ri-eye-off-line password-toggle';
+      }
+    }
+
+    // Role Switcher Handler & Form Destination Update
+    function switchRole(role, btnElement) {
+      document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+      btnElement.classList.add('active');
+      
+      document.getElementById('userRole').value = role;
+      const loginForm = document.getElementById('loginForm');
+      
+      // Redirect dynamically based on role selected
+      if (role === 'admin') {
+        loginForm.action = 'admin/index.html';
+      } else if (role === 'driver') {
+        loginForm.action = 'driver/index.html';
+      } else {
+        loginForm.action = 'index.html';
+      }
+    }
+  </script>
+
+</body>
+</html>
